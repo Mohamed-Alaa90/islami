@@ -3,6 +3,7 @@ import 'dart:ffi';
 import 'package:flutter/material.dart';
 import 'package:islami/thems.dart';
 
+// ignore: must_be_immutable
 class QuranTap extends StatelessWidget {
   QuranTap({super.key});
 
@@ -30,7 +31,7 @@ class QuranTap extends StatelessWidget {
         ),
         Expanded(
           child: GestureDetector(
-            onTap: (){},
+            onTap: () {},
             child: ListView.builder(
               itemCount: suraNames.length,
               itemBuilder: (context, index) {

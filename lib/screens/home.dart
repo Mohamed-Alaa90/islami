@@ -1,4 +1,4 @@
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:islami/screens/hadeth_tap/hadeth_tap.dart';
 import 'package:islami/screens/quran_tap/quran_tap.dart';
@@ -17,16 +17,15 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int selectedIndex = 0;
+  int _selectedIndex = 0;
 
   List<Widget> taps = [
     QuranTap(),
-     HadethTap(),
-     SebhaTap(),
-     RadioTap(),
-     SettingTap(),
+    const HadethTap(),
+    const SebhaTap(),
+    const RadioTap(),
+    const SettingTap(),
   ];
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -38,42 +37,45 @@ class _HomeState extends State<Home> {
           ),
         ),
         child: Scaffold(
+          backgroundColor: Colors.transparent, // للتأكد من أن الخلفية تظهر
           appBar: AppBar(
             title: Text(
               'اسلامي',
               style: MyTheme.lightTheme.textTheme.titleLarge,
             ),
           ),
-          bottomNavigationBar: CurvedNavigationBar(
-            animationCurve: Curves.ease,
-            backgroundColor: Colors.transparent,
-            color: MyTheme.lightColor,
-            height: 60,
-            animationDuration: const Duration(milliseconds: 450),
-            onTap: (index) {
-              setState(() {
-                selectedIndex = index;
-              });
-            },
-            items: const [
-              Image(
-                image: AssetImage('assets/images/quran_icn.png'),
-
+          bottomNavigationBar: BottomNavyBar(
+            selectedIndex: _selectedIndex,
+            showElevation: true, // use this to remove appBar's elevation
+            onItemSelected: (index) => setState(() {
+              _selectedIndex = index;
+              (
+                index,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.ease
+              );
+            }),
+            items: [
+              BottomNavyBarItem(
+                icon: const Icon(Icons.apps),
+                title: const Text('Home'),
+                activeColor: Colors.red,
               ),
-              Image(
-                image: AssetImage('assets/images/hadeth_icn.png'),
-              ),
-              Image(
-                image: AssetImage('assets/images/sebha_icn.png'),
-              ),
-              Image(
-                image: AssetImage('assets/images/radio_icn.png'),
-              ),
-              Icon(Icons.settings, size: 30, color: Colors.white),
-              // Settings Icon
+              BottomNavyBarItem(
+                  icon: const Icon(Icons.people),
+                  title: const Text('Users'),
+                  activeColor: Colors.purpleAccent),
+              BottomNavyBarItem(
+                  icon: const Icon(Icons.message),
+                  title: const Text('Messages'),
+                  activeColor: Colors.pink),
+              BottomNavyBarItem(
+                  icon: const Icon(Icons.settings),
+                  title: const Text('Settings'),
+                  activeColor: Colors.blue),
             ],
           ),
-          body: taps[selectedIndex],
+          body: taps[_selectedIndex],
         ),
       ),
     );

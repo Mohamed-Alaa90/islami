@@ -15,10 +15,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: MyTheme.lightTheme,
+      theme: MyTheme.darkTheme,
       routes: {
         Splash.routeName: (context) => const Splash(),
-        Home.routeName: (context) => Home(),
+        Home.routeName: (context) => const Home(),
       },
       initialRoute: Splash.routeName,
     );
