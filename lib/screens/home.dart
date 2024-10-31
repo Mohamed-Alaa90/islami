@@ -1,5 +1,7 @@
-import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:circle_nav_bar/circle_nav_bar.dart';
+import 'package:flutter_islamic_icons/flutter_islamic_icons.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:islami/screens/hadeth_tap/hadeth_tap.dart';
 import 'package:islami/screens/quran_tap/quran_tap.dart';
 import 'package:islami/screens/radio_tap/radio_tap.dart';
@@ -19,13 +21,14 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int _selectedIndex = 0;
 
-  List<Widget> taps = [
+  final List<Widget> taps = [
     QuranTap(),
-    const HadethTap(),
-    const SebhaTap(),
-    const RadioTap(),
-    const SettingTap(),
+     HadethTap(),
+     SebhaTap(),
+     RadioTap(),
+     SettingTap(),
   ];
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -37,45 +40,105 @@ class _HomeState extends State<Home> {
           ),
         ),
         child: Scaffold(
-          backgroundColor: Colors.transparent, // للتأكد من أن الخلفية تظهر
           appBar: AppBar(
             title: Text(
               'اسلامي',
-              style: MyTheme.lightTheme.textTheme.titleLarge,
+              style: GoogleFonts.amiri(
+                textStyle: MyTheme.lightTheme.textTheme.titleLarge,
+              ),
             ),
           ),
-          bottomNavigationBar: BottomNavyBar(
-            selectedIndex: _selectedIndex,
-            showElevation: true, // use this to remove appBar's elevation
-            onItemSelected: (index) => setState(() {
-              _selectedIndex = index;
-              (
-                index,
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.ease
-              );
-            }),
-            items: [
-              BottomNavyBarItem(
-                icon: const Icon(Icons.apps),
-                title: const Text('Home'),
-                activeColor: Colors.red,
+          bottomNavigationBar: CircleNavBar(
+            activeIcons: const [
+              Icon(
+                FlutterIslamicIcons.quran2,
+                color: Colors.black,
+                size: 25,
               ),
-              BottomNavyBarItem(
-                  icon: const Icon(Icons.people),
-                  title: const Text('Users'),
-                  activeColor: Colors.purpleAccent),
-              BottomNavyBarItem(
-                  icon: const Icon(Icons.message),
-                  title: const Text('Messages'),
-                  activeColor: Colors.pink),
-              BottomNavyBarItem(
-                  icon: const Icon(Icons.settings),
-                  title: const Text('Settings'),
-                  activeColor: Colors.blue),
+              Icon(
+                FlutterIslamicIcons.quran,
+                color: Colors.black,
+                size: 25,
+              ),
+              Icon(
+                FlutterIslamicIcons.tasbih2,
+                color: Colors.black,
+                size: 25,
+              ),
+              Icon(
+                FlutterIslamicIcons.allah,
+                color: Colors.black,
+                size: 25,
+              ),
+              Icon(
+                Icons.settings,
+                size: 25,
+                color: Colors.black,
+              ),
             ],
+            inactiveIcons: const [
+              Icon(
+                FlutterIslamicIcons.quran2,
+                color: Colors.white,
+                size: 20,
+              ),
+              Icon(
+                FlutterIslamicIcons.quran,
+                color: Colors.white,
+                size: 20,
+              ),
+              Icon(
+                FlutterIslamicIcons.tasbih2,
+                color: Colors.white,
+                size: 20,
+              ),
+              Icon(
+                FlutterIslamicIcons.allah,
+                color: Colors.white,
+                size: 20,
+              ),
+              Icon(
+                Icons.settings,
+                size: 20,
+                color: Colors.white,
+              ),
+            ],
+            levels: const [
+              'القران',
+              'الحديث',
+              'السبحه',
+              'الراديو',
+              'الاعدادات',
+            ],
+            activeLevelsStyle: GoogleFonts.amiri(fontSize: 16),
+            inactiveLevelsStyle:
+            GoogleFonts.amiri(fontSize: 16, color: Colors.white),
+            color: MyTheme.lightColor,
+            height: 60,
+            circleWidth: 40,
+            activeIndex: _selectedIndex,
+            onTap: (value) {
+              setState(() {
+                _selectedIndex = value;
+              });
+            },
+            iconCurve: Curves.linear,
+            tabCurve: Curves.linear,
+            cornerRadius: const BorderRadius.all(Radius.circular(15)),
+            padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+            shadowColor: Colors.black,
+            circleColor: MyTheme.lightColor,
           ),
-          body: taps[_selectedIndex],
+          body: AnimatedSwitcher(
+            duration: const Duration(milliseconds: 300),
+            transitionBuilder: (Widget child, Animation<double> animation) {
+              return FadeTransition(
+                opacity: animation,
+                child: child,
+              );
+            },
+            child: taps[_selectedIndex],
+          ),
         ),
       ),
     );

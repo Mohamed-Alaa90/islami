@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 class MyTheme {
@@ -13,12 +11,9 @@ class MyTheme {
       backgroundColor: Colors.transparent,
       centerTitle: true,
     ),
-    bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      selectedLabelStyle: TextStyle(fontSize: 25, color: fontLightColor),
-      unselectedLabelStyle: TextStyle(fontSize: 23),
-      selectedIconTheme: IconThemeData(color: fontLightColor, size: 25),
-      unselectedIconTheme: const IconThemeData(size: 23),
-      backgroundColor: lightColor,
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      selectedItemColor: Colors.white,
+      selectedIconTheme: IconThemeData(color: Colors.white, size: 40),
     ),
     scaffoldBackgroundColor: Colors.transparent,
     textTheme: TextTheme(

@@ -5,8 +5,8 @@ class HadethTap extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder(
-      color: Colors.blue,
+    return Container(
+      color: Colors.red,
     );
   }
 }
