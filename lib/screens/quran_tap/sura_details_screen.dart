@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SuraDetailsScreen extends StatelessWidget {
   const SuraDetailsScreen({super.key});
@@ -18,7 +19,12 @@ class SuraDetailsScreen extends StatelessWidget {
         ),
         child: Scaffold(
           appBar: AppBar(
-            title: Text(args.name),
+            title: Text(
+              args.name,
+              style: GoogleFonts.amiri(
+                fontSize: 30,
+                  textStyle: Theme.of(context).textTheme.titleSmall),
+            ),
           ),
         ),
       ),

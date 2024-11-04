@@ -7,6 +7,7 @@ class MyTheme {
   static Color fontLightColor = const Color(0xff242424);
 
   static ThemeData lightTheme = ThemeData(
+primaryColor: lightColor,
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.transparent,
       centerTitle: true,

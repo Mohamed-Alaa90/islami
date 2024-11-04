@@ -19,14 +19,14 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int _selectedIndex = 0;
+  int _selectedIndex = 2;
 
   final List<Widget> taps = [
+    HadethTap(),
+    SebhaTap(),
     QuranTap(),
-     HadethTap(),
-     SebhaTap(),
-     RadioTap(),
-     SettingTap(),
+    RadioTap(),
+    SettingTap(),
   ];
 
   @override
@@ -51,7 +51,7 @@ class _HomeState extends State<Home> {
           bottomNavigationBar: CircleNavBar(
             activeIcons: const [
               Icon(
-                FlutterIslamicIcons.quran2,
+                FlutterIslamicIcons.tasbih2,
                 color: Colors.black,
                 size: 25,
               ),
@@ -61,7 +61,7 @@ class _HomeState extends State<Home> {
                 size: 25,
               ),
               Icon(
-                FlutterIslamicIcons.tasbih2,
+                FlutterIslamicIcons.quran2,
                 color: Colors.black,
                 size: 25,
               ),
@@ -78,7 +78,7 @@ class _HomeState extends State<Home> {
             ],
             inactiveIcons: const [
               Icon(
-                FlutterIslamicIcons.quran2,
+                FlutterIslamicIcons.tasbih2,
                 color: Colors.white,
                 size: 20,
               ),
@@ -88,7 +88,7 @@ class _HomeState extends State<Home> {
                 size: 20,
               ),
               Icon(
-                FlutterIslamicIcons.tasbih2,
+                FlutterIslamicIcons.quran2,
                 color: Colors.white,
                 size: 20,
               ),
@@ -104,15 +104,15 @@ class _HomeState extends State<Home> {
               ),
             ],
             levels: const [
-              'القران',
-              'الحديث',
               'السبحه',
+              'الحديث',
+              'القران',
               'الراديو',
               'الاعدادات',
             ],
             activeLevelsStyle: GoogleFonts.amiri(fontSize: 16),
             inactiveLevelsStyle:
-            GoogleFonts.amiri(fontSize: 16, color: Colors.white),
+                GoogleFonts.amiri(fontSize: 16, color: Colors.white),
             color: MyTheme.lightColor,
             height: 60,
             circleWidth: 40,

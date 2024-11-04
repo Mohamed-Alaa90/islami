@@ -18,11 +18,33 @@ class QuranTap extends StatelessWidget {
           thickness: 3,
           color: MyTheme.lightColor,
         ),
-        Text(
-          'اسم السوره',
-          style: GoogleFonts.amiri(
-              textStyle: Theme.of(context).textTheme.titleMedium),
-        ),
+        Row(
+            children: [
+          Expanded(
+            child: Text(
+              textAlign: TextAlign.center,
+              'اسم السوره',
+              style: GoogleFonts.amiri(
+                  textStyle: Theme.of(context).textTheme.titleMedium),
+            ),
+          ),
+          SizedBox(
+            height: 40,
+            child: VerticalDivider(
+              color: Theme.of(context).primaryColor,
+              thickness: 3,
+            ),
+          ),
+          Expanded(
+            child: Text(
+              textAlign: TextAlign.center,
+
+              'عدد الايات',
+              style: GoogleFonts.amiri(
+                  textStyle: Theme.of(context).textTheme.titleMedium),
+            ),
+          ),
+        ]),
         Divider(
           thickness: 3,
           color: MyTheme.lightColor,
@@ -46,7 +68,7 @@ class QuranTap extends StatelessWidget {
     );
   }
 
-  List<String> suraNames = [
+  final List<String> suraNames = [
     "الفاتحه",
     "البقرة",
     "آل عمران",

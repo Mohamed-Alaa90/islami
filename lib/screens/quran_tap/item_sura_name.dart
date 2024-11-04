@@ -3,10 +3,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:islami/screens/quran_tap/sura_details_screen.dart';
 
 class ItemSuraName extends StatelessWidget {
-  ItemSuraName({super.key, required this.name, required this.index});
+  const ItemSuraName({super.key, required this.name, required this.index});
 
-  String name;
-  int index;
+  final String name;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
