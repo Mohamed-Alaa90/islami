@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami/screens/quran_tap/quran_tap.dart';
-
 import '../../thems.dart';
 
 class SuraDetailsScreen extends StatefulWidget {
-  const SuraDetailsScreen({super.key});
+  SuraDetailsScreen({super.key});
 
   static const String routeName = 'SuraDetails';
 
@@ -15,126 +14,94 @@ class SuraDetailsScreen extends StatefulWidget {
 }
 
 class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
-  String content = '';
-  List<String> versesList = [];
-
   @override
   Widget build(BuildContext context) {
     var data = ModalRoute.of(context)?.settings.arguments as SuraData;
-
-    return FutureBuilder(
-      future: loadData(data.suraNumber),
-      builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return Scaffold(
-            appBar: AppBar(
-              title: Text(
-                'اسلامي',
-                style: GoogleFonts.amiri(
-                    textStyle: Theme.of(context).textTheme.titleLarge),
+    if (content.isEmpty) {
+      loadData(data.suraNumber);
+    }else{
+       Center(
+        child: CircularProgressIndicator(
+          color: Theme.of(context).primaryColor,
+        ),
+      );
+    }
+    return Container(
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          fit: BoxFit.cover,
+          image: AssetImage('assets/images/default_bg.png'),
+        ),
+      ),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            'اسلامي',
+            style: GoogleFonts.amiri(
+                //fontSize: 40,
+                textStyle: Theme.of(context).textTheme.titleLarge),
+          ),
+        ),
+        body: Container(
+          margin:
+              const EdgeInsets.only(top: 20, left: 30, right: 30, bottom: 120),
+          padding:
+              const EdgeInsets.only(top: 20, left: 30, right: 30, bottom: 20),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: const Color(0xffF8F8F8).withOpacity(0.80),
+          ),
+          child: Column(
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    " سورة ${data.suraName}",
+                    style: GoogleFonts.amiri(
+                        textStyle: Theme.of(context).textTheme.titleMedium),
+                  ),
+                  //SizedBox(),
+                  IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.play_circle),
+                  ),
+                ],
               ),
-            ),
-            body: Center(
-              child: CircularProgressIndicator(
+              Divider(
                 color: Theme.of(context).primaryColor,
+                indent: 50,
+                endIndent: 50,
               ),
-            ),
-          );
-        } else if (snapshot.hasError) {
-          return Scaffold(
-            appBar: AppBar(
-              title: Text(
-                'اسلامي',
-                style: GoogleFonts.amiri(
-                    textStyle: Theme.of(context).textTheme.titleLarge),
-              ),
-            ),
-            body: Center(
-              child: Text('Failed to load data'),
-            ),
-          );
-        } else {
-          return Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage('assets/images/default_bg.png'),
-              ),
-            ),
-            child: Scaffold(
-              appBar: AppBar(
-                title: Text(
-                  'اسلامي',
-                  style: GoogleFonts.amiri(
-                      textStyle: Theme.of(context).textTheme.titleLarge),
+              Expanded(
+                child: ListView.separated(
+                  separatorBuilder: (context, index) => Divider(
+                    thickness: 1,
+                    color: MyTheme.lightColor,
+                  ),
+                  itemCount: versesList.length,
+                  itemBuilder: (context, index) => Text(
+                    "{${index + 1}} ${versesList[index]}",
+                    textAlign: TextAlign.center,
+                    style: GoogleFonts.almarai(
+                        textStyle: Theme.of(context).textTheme.titleSmall),
+                  ),
                 ),
-              ),
-              body: Container(
-                margin: const EdgeInsets.only(top: 20, left: 30, right: 30, bottom: 120),
-                padding: const EdgeInsets.only(top: 20, left: 30, right: 30, bottom: 20),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: const Color(0xffF8F8F8).withOpacity(0.80),
-                ),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          " سورة ${data.suraName}",
-                          style: GoogleFonts.amiri(
-                              textStyle: Theme.of(context).textTheme.titleMedium),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.play_circle),
-                        ),
-                      ],
-                    ),
-                    Divider(
-                      color: Theme.of(context).primaryColor,
-                      indent: 50,
-                      endIndent: 50,
-                    ),
-                    Expanded(
-                      child: ListView.separated(
-                        separatorBuilder: (context, index) => Divider(
-                          thickness: 1,
-                          color: MyTheme.lightColor,
-                        ),
-                        itemCount: versesList.length,
-                        itemBuilder: (context, index) => Text(
-                          "{${index + 1}} ${versesList[index]}",
-                          textAlign: TextAlign.center,
-                          style: GoogleFonts.almarai(
-                              textStyle: Theme.of(context).textTheme.titleSmall),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
-          );
-        }
-      },
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 
+  String content = '';
+  List<String> versesList = [];
+
   Future<void> loadData(String suraNumber) async {
-    try {
-      content = await rootBundle.loadString('assets/quran/$suraNumber.txt');
-      versesList = content.split('\n');
-    } catch (e) {
-      throw Exception('Failed to load data');
-    }
+    content = await rootBundle.loadString('assets/quran/$suraNumber.txt');
+    versesList = content.split('\n');
+
+    setState(() {});
   }
-}
-
-class SuraData {
-  final String suraName;
-  final String suraNumber;
-
-  SuraData({required this.suraName, required this.suraNumber});
 }

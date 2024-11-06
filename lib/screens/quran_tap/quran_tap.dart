@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami/screens/quran_tap/item_sura_name.dart';
 import 'package:islami/screens/quran_tap/sura_details_screen.dart';
-import 'package:islami/thems.dart';
-
 // ignore: must_be_immutable
 class QuranTap extends StatelessWidget {
   QuranTap({super.key});
