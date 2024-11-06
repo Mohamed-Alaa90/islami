@@ -1,29 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:islami/screens/quran_tap/quran_tap.dart';
 import 'package:islami/screens/quran_tap/sura_details_screen.dart';
 
 class ItemSuraName extends StatelessWidget {
-  const ItemSuraName({super.key, required this.name, required this.index});
+  final SuraData data;
 
-  final String name;
-  final int index;
+  const ItemSuraName({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        Navigator.pushNamed(
-          context,
-          SuraDetailsScreen.routeName,
-          arguments: SuraDetailsArgs(name: name, index: index),
-        );
-      },
-      child: Text(
-        name,
-        textAlign: TextAlign.center,
-        style: GoogleFonts.amiri(
-            textStyle: Theme.of(context).textTheme.titleSmall),
-      ),
-    );
+    return  Row(children: [
+        Expanded(
+          child: Text(
+            textAlign: TextAlign.center,
+            data.suraNumber,
+            style: GoogleFonts.amiri(
+                textStyle: Theme.of(context).textTheme.titleMedium),
+          ),
+        ),
+        SizedBox(
+          height: 40,
+          child: VerticalDivider(
+            color: Theme.of(context).primaryColor,
+            thickness: 2,
+          ),
+        ),
+        Expanded(
+          child: Text(
+            textAlign: TextAlign.center,
+            data.suraName,
+            style: GoogleFonts.amiri(
+                textStyle: Theme.of(context).textTheme.titleMedium),
+          ),
+        ),
+      ]);
   }
 }

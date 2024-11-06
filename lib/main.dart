@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       routes: {
         Splash.routeName: (context) => const Splash(),
         Home.routeName: (context) => const Home(),
-        SuraDetailsScreen.routeName: (context) => const SuraDetailsScreen(),
+        SuraDetailsScreen.routeName: (context) =>  SuraDetailsScreen(),
       },
       initialRoute: Splash.routeName,
     );
