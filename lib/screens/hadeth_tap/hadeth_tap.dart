@@ -10,7 +10,7 @@ class HadethTap extends StatelessWidget {
         Center(child: Image.asset('assets/images/hadeth_logo.png')),
         Container(
           color: Colors.red,
-          child: Card(),
+          child: const Card(),
         )
       ],
     );
