@@ -5,8 +5,14 @@ class HadethTap extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.red,
+    return Column(
+      children: [
+        Center(child: Image.asset('assets/images/hadeth_logo.png')),
+        Container(
+          color: Colors.red,
+          child: Card(),
+        )
+      ],
     );
   }
 }
