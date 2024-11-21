@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami/screens/quran_tap/item_sura_name.dart';
 import 'package:islami/screens/quran_tap/sura_details_screen.dart';
+import 'package:islami/thems.dart';
+import 'package:islami/widgets/custom_card.dart';
 // ignore: must_be_immutable
 class QuranTap extends StatelessWidget {
   QuranTap({super.key});
@@ -17,51 +19,43 @@ class QuranTap extends StatelessWidget {
         //   thickness: 3,
         //   color: MyTheme.lightColor,
         // ),
-        Card(
+        CustomCard(
+        borderRadius: BorderRadius.circular(25),
           color: Colors.white54 ,
           elevation: 6,
-          margin: EdgeInsets.all(10),
+          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          border: Border.all(color: MyTheme.lightColor,width: 3),
           //padding: EdgeInsets.all(10),
-          child: Container(
-            margin: EdgeInsets.all(10),
-            padding: EdgeInsets.all(10),
-          
-            decoration: BoxDecoration(
-
-              border: Border.all(color: Theme.of(context).primaryColor, width: 3),
-              // color: Theme.of(context).primaryColor,
-              borderRadius: BorderRadius.circular(15),
+          child: Row(children: [
+            Expanded(
+              child: Text(
+                textAlign: TextAlign.center,
+                "عدد الأيات",
+                style: GoogleFonts.amiri(
+                    textStyle: Theme.of(context).textTheme.titleMedium),
+              ),
             ),
-            child: Row(children: [
-              Expanded(
-                child: Text(
-                  textAlign: TextAlign.center,
-                  'رقم السورة',
-                  style: GoogleFonts.amiri(
-                      textStyle: Theme.of(context).textTheme.titleMedium),
-                ),
+            SizedBox(
+              height: 40,
+              child: VerticalDivider(
+                color: Theme.of(context).primaryColor,
+                thickness: 3,
               ),
-              SizedBox(
-                height: 40,
-                child: VerticalDivider(
-                  color: Theme.of(context).primaryColor,
-                  thickness: 3,
-                ),
+            ),
+            Expanded(
+              child: Text(
+                textAlign: TextAlign.center,
+                'اسم السوره',
+                style: GoogleFonts.amiri(
+                    textStyle: Theme.of(context).textTheme.titleMedium),
               ),
-              Expanded(
-                child: Text(
-                  textAlign: TextAlign.center,
-                  'اسم السوره',
-                  style: GoogleFonts.amiri(
-                      textStyle: Theme.of(context).textTheme.titleMedium),
-                ),
-              ),
-            ]),
-          ),
+            ),
+          ]),
         ),
 
         Expanded(
           child: ListView.builder(
+           physics: const BouncingScrollPhysics(),
             // separatorBuilder: (context, index) => Divider(
             //   endIndent: 35,
             //   indent: 35,
@@ -70,6 +64,7 @@ class QuranTap extends StatelessWidget {
             // ),
             itemBuilder: (context, index) {
               return InkWell(
+              key: ValueKey(index),
                 onTap: () {
                   Navigator.pushNamed(context, SuraDetailsScreen.routeName,
                       arguments: SuraData(
@@ -79,7 +74,7 @@ class QuranTap extends StatelessWidget {
                 child: ItemSuraName(
                   data: SuraData(
                       suraName: suraNames[index],
-                      suraNumber: (index + 1).toString()),
+                      suraNumber: versesNumber[index].toString()),
                 ),
               );
             },

@@ -7,7 +7,7 @@ class MyTheme {
   static Color fontLightColor = const Color(0xff242424);
 
   static ThemeData lightTheme = ThemeData(
-primaryColor: lightColor,
+    primaryColor: lightColor,
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.transparent,
       centerTitle: true,
@@ -27,10 +27,13 @@ primaryColor: lightColor,
     ),
   );
   static ThemeData darkTheme = ThemeData(
+    primaryColor: darkColor,
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.transparent,
       centerTitle: true,
     ),
+    bottomNavigationBarTheme:
+        BottomNavigationBarThemeData(backgroundColor: darkColor),
     scaffoldBackgroundColor: Colors.transparent,
     textTheme: TextTheme(
       titleSmall: TextStyle(

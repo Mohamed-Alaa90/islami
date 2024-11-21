@@ -5,7 +5,7 @@ import 'package:islami/screens/quran_tap/quran_tap.dart';
 import '../../thems.dart';
 
 class SuraDetailsScreen extends StatefulWidget {
-  SuraDetailsScreen({super.key});
+  const SuraDetailsScreen({super.key});
 
   static const String routeName = 'SuraDetails';
 
@@ -14,18 +14,18 @@ class SuraDetailsScreen extends StatefulWidget {
 }
 
 class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
+  String content = '';
+  List<String> versesList = [];
+  bool isLoading = true; // حالة انتظار البيانات
+
   @override
   Widget build(BuildContext context) {
     var data = ModalRoute.of(context)?.settings.arguments as SuraData;
-    if (content.isEmpty) {
-      loadData(data.suraNumber);
-    }else{
-       Center(
-        child: CircularProgressIndicator(
-          color: Theme.of(context).primaryColor,
-        ),
-      );
+
+    if (isLoading) {
+      loadData(data.suraNumber); // تحميل البيانات
     }
+
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
@@ -38,70 +38,75 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
           title: Text(
             'اسلامي',
             style: GoogleFonts.amiri(
-                //fontSize: 40,
                 textStyle: Theme.of(context).textTheme.titleLarge),
           ),
         ),
-        body: Container(
-          margin:
-              const EdgeInsets.only(top: 20, left: 30, right: 30, bottom: 120),
-          padding:
-              const EdgeInsets.only(top: 20, left: 30, right: 30, bottom: 20),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: const Color(0xffF8F8F8).withOpacity(0.80),
-          ),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    " سورة ${data.suraName}",
-                    style: GoogleFonts.amiri(
-                        textStyle: Theme.of(context).textTheme.titleMedium),
-                  ),
-                  //SizedBox(),
-                  IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.play_circle),
-                  ),
-                ],
-              ),
-              Divider(
-                color: Theme.of(context).primaryColor,
-                indent: 50,
-                endIndent: 50,
-              ),
-              Expanded(
-                child: ListView.separated(
-                  separatorBuilder: (context, index) => Divider(
-                    thickness: 1,
-                    color: MyTheme.lightColor,
-                  ),
-                  itemCount: versesList.length,
-                  itemBuilder: (context, index) => Text(
-                    "{${index + 1}} ${versesList[index]}",
-                    textAlign: TextAlign.center,
-                    style: GoogleFonts.almarai(
-                        textStyle: Theme.of(context).textTheme.titleSmall),
-                  ),
+        body: isLoading
+            ? Center(
+                child: CircularProgressIndicator(
+                  color: Theme.of(context).primaryColor,
                 ),
               )
-            ],
-          ),
-        ),
+            : Container(
+                margin: const EdgeInsets.only(
+                    top: 20, left: 30, right: 30, bottom: 120),
+                padding: const EdgeInsets.only(
+                    top: 20, left: 30, right: 30, bottom: 20),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: const Color(0xffF8F8F8).withOpacity(0.80),
+                ),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          " سورة ${data.suraName}",
+                          style: GoogleFonts.amiri(
+                              textStyle:
+                                  Theme.of(context).textTheme.titleMedium),
+                        ),
+                        IconButton(
+                          onPressed: () {},
+                          icon: const Icon(Icons.play_circle),
+                        ),
+                      ],
+                    ),
+                    Divider(
+                      color: Theme.of(context).primaryColor,
+                      indent: 50,
+                      endIndent: 50,
+                    ),
+                    Expanded(
+                      child: ListView.separated(
+                        separatorBuilder: (context, index) => Divider(
+                          thickness: 1,
+                          color: MyTheme.lightColor,
+                        ),
+                        itemCount: versesList.length,
+                        itemBuilder: (context, index) => Text(
+                          "{${index + 1}} ${versesList[index]}",
+                          textAlign: TextAlign.center,
+                          style: GoogleFonts.almarai(
+                              textStyle:
+                                  Theme.of(context).textTheme.titleSmall),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
       ),
     );
   }
-
-  String content = '';
-  List<String> versesList = [];
 
   Future<void> loadData(String suraNumber) async {
     content = await rootBundle.loadString('assets/quran/$suraNumber.txt');
     versesList = content.split('\n');
 
-    setState(() {});
+    setState(() {
+      isLoading = false;
+    });
   }
 }

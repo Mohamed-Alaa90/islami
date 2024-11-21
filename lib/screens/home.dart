@@ -22,10 +22,11 @@ class _HomeState extends State<Home> {
   int _selectedIndex = 2;
 
   final List<Widget> taps = [
-    HadethTap(),
+    RadioTap(),
+
     SebhaTap(),
     QuranTap(),
-    RadioTap(),
+    HadethTap(),
     SettingTap(),
   ];
 
@@ -53,7 +54,7 @@ class _HomeState extends State<Home> {
           activeIcons: const [
             Icon(
               FlutterIslamicIcons.tasbih2,
-              color: Colors.black,
+              color:  Colors.black,
               size: 25,
             ),
             Icon(
@@ -127,9 +128,9 @@ class _HomeState extends State<Home> {
           tabCurve: Curves.easeOut,
           elevation: 6,
           circleShadowColor: Colors.white,
-          cornerRadius: const BorderRadius.all(Radius.circular(15)),
+          cornerRadius: const BorderRadius.all(Radius.circular(20)),
           padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
-          shadowColor: Colors.black,
+          shadowColor:MyTheme.fontDarkColor,
           circleColor: MyTheme.lightColor,
         ),
         body: AnimatedSwitcher(
