@@ -39,6 +39,8 @@ dependencies:
   circle_nav_bar:
   google_fonts:
   shimmer:
+  flutter_native_splash:
+  flutter_svg:
 dev_dependencies:
   flutter_test:
     sdk: flutter

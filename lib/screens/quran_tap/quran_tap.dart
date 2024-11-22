@@ -4,6 +4,7 @@ import 'package:islami/screens/quran_tap/item_sura_name.dart';
 import 'package:islami/screens/quran_tap/sura_details_screen.dart';
 import 'package:islami/thems.dart';
 import 'package:islami/widgets/custom_card.dart';
+
 // ignore: must_be_immutable
 class QuranTap extends StatelessWidget {
   QuranTap({super.key});
@@ -20,11 +21,10 @@ class QuranTap extends StatelessWidget {
         //   color: MyTheme.lightColor,
         // ),
         CustomCard(
-        borderRadius: BorderRadius.circular(25),
-          color: Colors.white54 ,
+          borderRadius: BorderRadius.circular(25),
           elevation: 6,
           margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          border: Border.all(color: MyTheme.lightColor,width: 3),
+          border: Border.all(width: 3),
           //padding: EdgeInsets.all(10),
           child: Row(children: [
             Expanded(
@@ -55,7 +55,7 @@ class QuranTap extends StatelessWidget {
 
         Expanded(
           child: ListView.builder(
-           physics: const BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             // separatorBuilder: (context, index) => Divider(
             //   endIndent: 35,
             //   indent: 35,
@@ -64,7 +64,7 @@ class QuranTap extends StatelessWidget {
             // ),
             itemBuilder: (context, index) {
               return InkWell(
-              key: ValueKey(index),
+                key: ValueKey(index),
                 onTap: () {
                   Navigator.pushNamed(context, SuraDetailsScreen.routeName,
                       arguments: SuraData(

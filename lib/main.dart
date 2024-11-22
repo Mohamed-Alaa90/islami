@@ -18,13 +18,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       //darkTheme: MyTheme.darkTheme,
       debugShowCheckedModeBanner: false,
-      theme: MyTheme.lightTheme,
+      theme: MyTheme.darkTheme,
+      themeMode:  ThemeMode.system,
       routes: {
         Splash.routeName: (context) => const Splash(),
         Home.routeName: (context) => const Home(),
-        SuraDetailsScreen.routeName: (context) =>  SuraDetailsScreen(),
+        SuraDetailsScreen.routeName: (context) =>  const SuraDetailsScreen(),
       },
-      initialRoute: Splash.routeName,
+      initialRoute: Home.routeName,
     );
   }
 }
