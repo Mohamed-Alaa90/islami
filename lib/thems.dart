@@ -8,15 +8,19 @@ class MyTheme {
   static Color whiteLightColor = const Color(0xffd5d4d4);
 
   static ThemeData lightTheme = ThemeData(
+
     primaryColor: lightColor,
     appBarTheme: const AppBarTheme(
       backgroundColor: Colors.transparent,
       centerTitle: true,
     ),
-    dividerColor: lightColor,
-    cardTheme: CardTheme(
-      color: whiteLightColor
+    dividerTheme: DividerThemeData(
+      color: lightColor,
+      indent: 3
     ),
+    cardTheme: CardTheme(
+        //margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        color: whiteLightColor),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       selectedItemColor: Colors.white,
       selectedIconTheme: IconThemeData(color: Colors.white, size: 40),
@@ -39,8 +43,7 @@ class MyTheme {
       centerTitle: true,
     ),
     bottomNavigationBarTheme:
-        BottomNavigationBarThemeData(
-            backgroundColor: darkColor),
+        BottomNavigationBarThemeData(backgroundColor: darkColor),
     scaffoldBackgroundColor: Colors.transparent,
     textTheme: TextTheme(
       titleSmall: TextStyle(
@@ -50,8 +53,7 @@ class MyTheme {
       titleLarge: TextStyle(
           color: fontDarkColor, fontSize: 30, fontWeight: FontWeight.w700),
     ),
-    cardTheme: CardTheme(
-      color: darkColor
-    )
+    dividerTheme: DividerThemeData(color: fontDarkColor,indent: 3),
+    cardTheme: CardTheme(color: darkColor),
   );
 }

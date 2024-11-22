@@ -36,14 +36,13 @@ class _HomeState extends State<Home> {
         decoration: const BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.cover,
-            image: AssetImage('assets/images/default_bg.png'),
+            image: AssetImage("assets/images/bg_dark.png"),
           ),
         ),
         child: Scaffold(
           appBar: AppBar(
             title: Text(
               'اسلامي',
-      
               style: GoogleFonts.amiri(
                 fontSize: 35,
                 textStyle: MyTheme.lightTheme.textTheme.titleLarge,
@@ -54,7 +53,7 @@ class _HomeState extends State<Home> {
             activeIcons: const [
               Icon(
                 FlutterIslamicIcons.tasbih2,
-                color:  Colors.black,
+                color: Colors.black,
                 size: 25,
               ),
               Icon(
@@ -116,7 +115,6 @@ class _HomeState extends State<Home> {
             inactiveLevelsStyle:
                 GoogleFonts.amiri(fontSize: 16, color: Colors.white),
             color: MyTheme.darkColor,
-
             height: 60,
             circleWidth: 40,
             activeIndex: _selectedIndex,
@@ -131,7 +129,7 @@ class _HomeState extends State<Home> {
             circleShadowColor: Colors.white,
             cornerRadius: const BorderRadius.all(Radius.circular(20)),
             padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
-            shadowColor:MyTheme.fontDarkColor,
+            shadowColor: MyTheme.fontDarkColor,
             circleColor: MyTheme.darkColor,
           ),
           body: AnimatedSwitcher(

@@ -16,21 +16,21 @@ class SuraDetailsScreen extends StatefulWidget {
 class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
   String content = '';
   List<String> versesList = [];
-  bool isLoading = true; // حالة انتظار البيانات
+  bool isLoading = true;
 
   @override
   Widget build(BuildContext context) {
     var data = ModalRoute.of(context)?.settings.arguments as SuraData;
 
     if (isLoading) {
-      loadData(data.suraNumber); // تحميل البيانات
+      loadData(data.suraNumber);
     }
 
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.cover,
-          image: AssetImage('assets/images/default_bg.png'),
+          image: AssetImage('assets/images/bg_dark.png'),
         ),
       ),
       child: Scaffold(
@@ -49,12 +49,12 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
               )
             : Container(
                 margin: const EdgeInsets.only(
-                    top: 20, left: 30, right: 30, bottom: 120),
+                    top: 20, left: 20, right: 20, bottom: 50),
                 padding: const EdgeInsets.only(
-                    top: 20, left: 30, right: 30, bottom: 20),
+                    top: 10, left: 20, right: 20, bottom: 20),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: const Color(0xffF8F8F8).withOpacity(0.80),
+                  color: const Color(0xff141A2E).withOpacity(0.80),
                 ),
                 child: Column(
                   children: [

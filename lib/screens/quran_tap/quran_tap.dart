@@ -13,44 +13,54 @@ class QuranTap extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Center(
-          child: Image.asset('assets/images/qur2an_screen_logo.png'),
+        SizedBox(
+          //height: MediaQuery.of(context).size.height * 0.2,
+          width: MediaQuery.of(context).size.width * 0.5,
+          child: Center(
+            child: Image.asset('assets/images/qur2an_screen_logo.png'),
+          ),
         ),
         // Divider(
         //   thickness: 3,
         //   color: MyTheme.lightColor,
         // ),
-        CustomCard(
-          borderRadius: BorderRadius.circular(25),
+        Card(
+          //borderRadius: BorderRadius.circular(25),
           elevation: 6,
           margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          border: Border.all(width: 3),
-          //padding: EdgeInsets.all(10),
-          child: Row(children: [
-            Expanded(
-              child: Text(
-                textAlign: TextAlign.center,
-                "عدد الأيات",
-                style: GoogleFonts.amiri(
-                    textStyle: Theme.of(context).textTheme.titleMedium),
-              ),
+
+          child: Container(
+            padding: const EdgeInsets.all(20),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(25),
+              border: Border.all(width: 3, color: MyTheme.fontDarkColor),
             ),
-            SizedBox(
-              height: 40,
-              child: VerticalDivider(
-                color: Theme.of(context).primaryColor,
-                thickness: 3,
+            child: Row(children: [
+              Expanded(
+                child: Text(
+                  textAlign: TextAlign.center,
+                  "عدد الأيات",
+                  style: GoogleFonts.amiri(
+                      textStyle: Theme.of(context).textTheme.titleMedium),
+                ),
               ),
-            ),
-            Expanded(
-              child: Text(
-                textAlign: TextAlign.center,
-                'اسم السوره',
-                style: GoogleFonts.amiri(
-                    textStyle: Theme.of(context).textTheme.titleMedium),
+              SizedBox(
+                height: 40,
+                child: VerticalDivider(
+                  color: Theme.of(context).primaryColor,
+                  thickness: 3,
+                ),
               ),
-            ),
-          ]),
+              Expanded(
+                child: Text(
+                  textAlign: TextAlign.center,
+                  'اسم السوره',
+                  style: GoogleFonts.amiri(
+                      textStyle: Theme.of(context).textTheme.titleMedium),
+                ),
+              ),
+            ]),
+          ),
         ),
 
         Expanded(

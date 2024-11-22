@@ -40,7 +40,7 @@ dependencies:
   google_fonts:
   shimmer:
   flutter_native_splash:
-  flutter_svg:
+  flutter_svg: ^2.0.15
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -61,6 +61,7 @@ flutter:
 
     - assets/images/
     - assets/quran/
+    - assets/hadeth/ahadeth.txt
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
