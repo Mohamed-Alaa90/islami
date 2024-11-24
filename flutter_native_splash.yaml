@@ -1,6 +1,4 @@
 flutter_native_splash:
-  #color: "#DBDADA"
-  #image: assets/splash_light_android_12.png
   background_image: "assets/images/splash.png"
   background_image_dark: "assets/images/splash_dark.png"
   android: true

@@ -24,13 +24,13 @@ class QuranTap extends StatelessWidget {
         Card(
           //borderRadius: BorderRadius.circular(25),
           elevation: 6,
-          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          margin: const EdgeInsets.symmetric(horizontal: 13, vertical: 5),
 
           child: Container(
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(5),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(25),
-              border: Border.all(width: 3, color: MyTheme.fontDarkColor),
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(width: 3, color: Theme.of(context).primaryColor),
             ),
             child: Row(children: [
               Expanded(
@@ -41,13 +41,13 @@ class QuranTap extends StatelessWidget {
                       textStyle: Theme.of(context).textTheme.titleMedium),
                 ),
               ),
-              SizedBox(
-                height: 40,
-                child: VerticalDivider(
-                  color: Theme.of(context).primaryColor,
-                  thickness: 3,
-                ),
-              ),
+              // SizedBox(
+              //   height: 40,
+              //   child: VerticalDivider(
+              //     color: Theme.of(context).primaryColor,
+              //     thickness: 3,
+              //   ),
+              // ),
               Expanded(
                 child: Text(
                   textAlign: TextAlign.center,

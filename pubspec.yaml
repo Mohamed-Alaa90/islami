@@ -40,7 +40,7 @@ dependencies:
   google_fonts:
   shimmer:
   flutter_native_splash:
-  flutter_svg: ^2.0.15
+  flutter_launcher_icons:
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -97,3 +97,9 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  remove_alpha_ios: true
+  image_path: "assets/logo.jpg"
+  min_sdk_android: 21

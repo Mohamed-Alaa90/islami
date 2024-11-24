@@ -30,7 +30,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
       decoration: const BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.cover,
-          image: AssetImage('assets/images/bg_dark.png'),
+          image: AssetImage('assets/images/default_bg.png'),
         ),
       ),
       child: Scaffold(
@@ -54,7 +54,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                     top: 10, left: 20, right: 20, bottom: 20),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: const Color(0xff141A2E).withOpacity(0.80),
+                  color:Theme.of(context).primaryColor.withOpacity(0.40),
                 ),
                 child: Column(
                   children: [

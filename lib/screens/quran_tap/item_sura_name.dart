@@ -9,30 +9,40 @@ class ItemSuraName extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
+
       children: [
-        Expanded(
-          child: Text(
-            textAlign: TextAlign.center,
-            data.suraNumber,
-            style: GoogleFonts.amiri(
-                textStyle: Theme.of(context).textTheme.titleMedium),
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Expanded(
+              child: Text(
+                textAlign: TextAlign.center,
+                data.suraNumber,
+                style: GoogleFonts.amiri(
+                    textStyle: Theme.of(context).textTheme.titleMedium),
+              ),
+            ),
+            // SizedBox(
+            //   height:30,
+            //   child: VerticalDivider(
+            //     color: Theme.of(context).primaryColor,
+            //     thickness: 2,
+            //   ),
+            // ),
+            Expanded(
+              child: Text(
+                textAlign: TextAlign.center,
+                data.suraName,
+                style: GoogleFonts.amiri(
+                    textStyle: Theme.of(context).textTheme.titleMedium),
+              ),
+            ),
+          ],
         ),
-        SizedBox(
-          height: 40,
-          child: VerticalDivider(
-            color: Theme.of(context).primaryColor,
-            thickness: 2,
-          ),
-        ),
-        Expanded(
-          child: Text(
-            textAlign: TextAlign.center,
-            data.suraName,
-            style: GoogleFonts.amiri(
-                textStyle: Theme.of(context).textTheme.titleMedium),
-          ),
+        const Divider(
+          endIndent: 30,
+          indent: 30,
         ),
       ],
     );

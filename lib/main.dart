@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:islami/screens/hadeth_tap/hadeth_details_screen.dart';
 import 'package:islami/screens/home.dart';
 import 'package:islami/screens/quran_tap/sura_details_screen.dart';
 import 'package:islami/screens/splach.dart';
@@ -24,6 +25,7 @@ class MyApp extends StatelessWidget {
         Splash.routeName: (context) => const Splash(),
         Home.routeName: (context) => const Home(),
         SuraDetailsScreen.routeName: (context) =>  const SuraDetailsScreen(),
+        HadethDetailsScreen.routeName: (context) =>  const HadethDetailsScreen(),
       },
       initialRoute: Home.routeName,
     );

@@ -23,9 +23,9 @@ class _HomeState extends State<Home> {
 
   final List<Widget> taps = [
     RadioTap(),
-    SebhaTap(),
-    QuranTap(),
     HadethTap(),
+    QuranTap(),
+    SebhaTap(),
     SettingTap(),
   ];
 
@@ -36,7 +36,7 @@ class _HomeState extends State<Home> {
         decoration: const BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.cover,
-            image: AssetImage("assets/images/bg_dark.png"),
+            image: AssetImage("assets/images/default_bg.png"),
           ),
         ),
         child: Scaffold(
@@ -45,93 +45,95 @@ class _HomeState extends State<Home> {
               'اسلامي',
               style: GoogleFonts.amiri(
                 fontSize: 35,
-                textStyle: MyTheme.lightTheme.textTheme.titleLarge,
+                textStyle: Theme.of(context).textTheme.titleLarge,
               ),
             ),
           ),
           bottomNavigationBar: CircleNavBar(
-            activeIcons: const [
-              Icon(
-                FlutterIslamicIcons.tasbih2,
-                color: Colors.black,
-                size: 25,
+              activeIcons:  [
+                Icon(
+                  FlutterIslamicIcons.tasbih2,
+                  color: Theme.of(context).cardColor,
+                  size: 25,
+                ),
+                Icon(
+                  FlutterIslamicIcons.quran,
+                  color: Theme.of(context).cardColor,
+                  size: 25,
+                ),
+                Icon(
+                  FlutterIslamicIcons.quran2,
+                  color: Theme.of(context).cardColor,
+                  size: 25,
+                ),
+                Icon(
+                  FlutterIslamicIcons.allah,
+                  color: Theme.of(context).cardColor,
+                  size: 25,
+                ),
+                Icon(
+                  Icons.settings,
+                  size: 25,
+                  color: Theme.of(context).cardColor,
+                ),
+              ],
+              inactiveIcons: const [
+                Icon(
+                  FlutterIslamicIcons.tasbih2,
+                  color: Colors.white,
+                  size: 20,
+                ),
+                Icon(
+                  FlutterIslamicIcons.quran,
+                  color: Colors.white,
+                  size: 20,
+                ),
+                Icon(
+                  FlutterIslamicIcons.quran2,
+                  color: Colors.white,
+                  size: 20,
+                ),
+                Icon(
+                  FlutterIslamicIcons.allah,
+                  color: Colors.white,
+                  size: 20,
+                ),
+                Icon(
+                  Icons.settings,
+                  size: 20,
+                  color: Colors.white,
+                ),
+              ],
+              levels: const [
+                'السبحه',
+                'الحديث',
+                'القران',
+                'الراديو',
+                'الاعدادات',
+              ],
+              activeLevelsStyle: GoogleFonts.amiri(
+                  fontSize: 16, color: Theme.of(context).cardColor),
+              inactiveLevelsStyle:
+                  GoogleFonts.amiri(fontSize: 16, color: Colors.white),
+              color: Theme.of(context).primaryColor,
+              height: 60,
+              circleWidth: 40,
+              activeIndex: _selectedIndex,
+              onTap: (value) {
+                setState(() {
+                  _selectedIndex = value;
+                });
+              },
+              iconCurve: Curves.easeOut,
+              tabCurve: Curves.easeOut,
+              elevation: 6,
+              circleShadowColor: Colors.white,
+              cornerRadius: const BorderRadius.all(
+                Radius.circular(20),
               ),
-              Icon(
-                FlutterIslamicIcons.quran,
-                color: Colors.black,
-                size: 25,
-              ),
-              Icon(
-                FlutterIslamicIcons.quran2,
-                color: Colors.black,
-                size: 25,
-              ),
-              Icon(
-                FlutterIslamicIcons.allah,
-                color: Colors.black,
-                size: 25,
-              ),
-              Icon(
-                Icons.settings,
-                size: 25,
-                color: Colors.black,
-              ),
-            ],
-            inactiveIcons: const [
-              Icon(
-                FlutterIslamicIcons.tasbih2,
-                color: Colors.white,
-                size: 20,
-              ),
-              Icon(
-                FlutterIslamicIcons.quran,
-                color: Colors.white,
-                size: 20,
-              ),
-              Icon(
-                FlutterIslamicIcons.quran2,
-                color: Colors.white,
-                size: 20,
-              ),
-              Icon(
-                FlutterIslamicIcons.allah,
-                color: Colors.white,
-                size: 20,
-              ),
-              Icon(
-                Icons.settings,
-                size: 20,
-                color: Colors.white,
-              ),
-            ],
-            levels: const [
-              'السبحه',
-              'الحديث',
-              'القران',
-              'الراديو',
-              'الاعدادات',
-            ],
-            activeLevelsStyle: GoogleFonts.amiri(fontSize: 16),
-            inactiveLevelsStyle:
-                GoogleFonts.amiri(fontSize: 16, color: Colors.white),
-            color: MyTheme.darkColor,
-            height: 60,
-            circleWidth: 40,
-            activeIndex: _selectedIndex,
-            onTap: (value) {
-              setState(() {
-                _selectedIndex = value;
-              });
-            },
-            iconCurve: Curves.easeOut,
-            tabCurve: Curves.easeOut,
-            elevation: 6,
-            circleShadowColor: Colors.white,
-            cornerRadius: const BorderRadius.all(Radius.circular(20)),
-            padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
-            shadowColor: MyTheme.fontDarkColor,
-            circleColor: MyTheme.darkColor,
-          ),
+              padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+              shadowColor: Theme.of(context).primaryColor,
+              circleColor: Theme.of(context).primaryColor),
           body: AnimatedSwitcher(
             duration: const Duration(milliseconds: 300),
             transitionBuilder: (Widget child, Animation<double> animation) {
