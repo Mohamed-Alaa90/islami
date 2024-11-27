@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami/screens/quran_tap/quran_tap.dart';
 import '../../thems.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SuraDetailsScreen extends StatefulWidget {
   const SuraDetailsScreen({super.key});
@@ -30,13 +31,13 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
       decoration: const BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.cover,
-          image: AssetImage('assets/images/default_bg.png'),
+          image: AssetImage('assets/images/home_dark_background.jpg'),
         ),
       ),
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-            'اسلامي',
+           AppLocalizations.of(context)!.app_title,
             style: GoogleFonts.amiri(
                 textStyle: Theme.of(context).textTheme.titleLarge),
           ),

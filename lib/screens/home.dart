@@ -7,7 +7,7 @@ import 'package:islami/screens/quran_tap/quran_tap.dart';
 import 'package:islami/screens/radio_tap/radio_tap.dart';
 import 'package:islami/screens/sebha_tap/sebha_tap.dart';
 import 'package:islami/screens/setting_tap/setting_tap.dart';
-import 'package:islami/thems.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Home extends StatefulWidget {
   static const String routeName = 'Home';
@@ -36,21 +36,23 @@ class _HomeState extends State<Home> {
         decoration: const BoxDecoration(
           image: DecorationImage(
             fit: BoxFit.cover,
-            image: AssetImage("assets/images/default_bg.png"),
+            image: AssetImage("assets/images/home_dark_background.jpg"),
           ),
         ),
         child: Scaffold(
           appBar: AppBar(
             title: Text(
-              'اسلامي',
+              AppLocalizations.of(context)!.app_title,
               style: GoogleFonts.amiri(
                 fontSize: 35,
                 textStyle: Theme.of(context).textTheme.titleLarge,
               ),
             ),
           ),
-          bottomNavigationBar: CircleNavBar(
-              activeIcons:  [
+          bottomNavigationBar: Directionality(
+            textDirection: TextDirection.ltr,
+            child: CircleNavBar(
+              activeIcons: [
                 Icon(
                   FlutterIslamicIcons.tasbih2,
                   color: Theme.of(context).cardColor,
@@ -104,12 +106,12 @@ class _HomeState extends State<Home> {
                   color: Colors.white,
                 ),
               ],
-              levels: const [
-                'السبحه',
-                'الحديث',
-                'القران',
-                'الراديو',
-                'الاعدادات',
+              levels: [
+                AppLocalizations.of(context)!.sebha,
+                AppLocalizations.of(context)!.hadeth,
+                AppLocalizations.of(context)!.quran,
+                AppLocalizations.of(context)!.radio,
+                AppLocalizations.of(context)!.setting,
               ],
               activeLevelsStyle: GoogleFonts.amiri(
                   fontSize: 16, color: Theme.of(context).cardColor),
@@ -133,7 +135,9 @@ class _HomeState extends State<Home> {
               ),
               padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
               shadowColor: Theme.of(context).primaryColor,
-              circleColor: Theme.of(context).primaryColor),
+              circleColor: Theme.of(context).primaryColor,
+            ),
+          ),
           body: AnimatedSwitcher(
             duration: const Duration(milliseconds: 300),
             transitionBuilder: (Widget child, Animation<double> animation) {

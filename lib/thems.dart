@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MyTheme {
+
   static Color lightColor = const Color(0xffB7935F);
   static Color darkColor = const Color(0xff141A2E);
   static Color goldColor = const Color(0xffFACC1D);
@@ -8,8 +9,13 @@ class MyTheme {
   static Color whiteColor = const Color(0xffd5d4d4);
 
   static ThemeData lightTheme = ThemeData(
+
+    useMaterial3: true,
     primaryColor: lightColor,
-    appBarTheme: const AppBarTheme(
+    appBarTheme:  AppBarTheme(
+      iconTheme: IconThemeData(color:blackColor ),
+      elevation: 0,
+
       backgroundColor: Colors.transparent,
       centerTitle: true,
     ),
@@ -33,9 +39,13 @@ class MyTheme {
     ),
   );
   static ThemeData darkTheme = ThemeData(
+      useMaterial3: true,
     primaryColor: darkColor,
-    appBarTheme: const AppBarTheme(
-      titleTextStyle: TextStyle(color: Colors.white),
+    appBarTheme:
+    AppBarTheme(
+      iconTheme: IconThemeData(color: whiteColor),
+      elevation: 0,
+      titleTextStyle: const TextStyle(color: Colors.white),
       backgroundColor: Colors.transparent,
       centerTitle: true,
     ),

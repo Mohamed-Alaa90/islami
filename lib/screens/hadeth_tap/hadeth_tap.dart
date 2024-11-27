@@ -3,10 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami/screens/hadeth_tap/hadeth_details_screen.dart';
 import 'package:islami/screens/hadeth_tap/item_hadeth_name.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami/thems.dart';
 
 class HadethTap extends StatefulWidget {
-  HadethTap({super.key});
+  const HadethTap({super.key});
 
   @override
   State<HadethTap> createState() => _HadethTapState();
@@ -37,12 +38,12 @@ class _HadethTapState extends State<HadethTap> {
             width: double.infinity,
             padding: const EdgeInsets.all(5),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(25),
+              borderRadius: BorderRadius.circular(20),
               border:
-                  Border.all(width: 3, color: Theme.of(context).primaryColor),
+                  Border.all(width: 0, color: MyTheme.whiteColor),
             ),
             child: Text(
-              "الأحاديث",
+              AppLocalizations.of(context)!.hadeth_name,
               textAlign: TextAlign.center,
               style: GoogleFonts.amiri(
                   textStyle: Theme.of(context).textTheme.titleMedium),

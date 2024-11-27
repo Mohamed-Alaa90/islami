@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami/screens/quran_tap/item_sura_name.dart';
 import 'package:islami/screens/quran_tap/sura_details_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami/thems.dart';
+
 class QuranTap extends StatelessWidget {
   QuranTap({super.key});
 
@@ -17,41 +19,30 @@ class QuranTap extends StatelessWidget {
             child: Image.asset('assets/images/qur2an_screen_logo.png'),
           ),
         ),
-        // Divider(
-        //   thickness: 3,
-        //   color: MyTheme.lightColor,
-        // ),
-        Card(
-          //borderRadius: BorderRadius.circular(25),
-          elevation: 6,
+        Container(
           margin: const EdgeInsets.symmetric(horizontal: 13, vertical: 5),
+          //padding: const EdgeInsets.all(5),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(width: 1, color: MyTheme.whiteColor),
+          ),
+          child: Card(
+            //borderRadius: BorderRadius.circular(25),
+            elevation: 6,
 
-          child: Container(
-            padding: const EdgeInsets.all(5),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(width: 3, color: Theme.of(context).primaryColor),
-            ),
             child: Row(children: [
               Expanded(
                 child: Text(
                   textAlign: TextAlign.center,
-                  "عدد الأيات",
+                  AppLocalizations.of(context)!.number_of_verses,
                   style: GoogleFonts.amiri(
                       textStyle: Theme.of(context).textTheme.titleMedium),
                 ),
               ),
-              // SizedBox(
-              //   height: 40,
-              //   child: VerticalDivider(
-              //     color: Theme.of(context).primaryColor,
-              //     thickness: 3,
-              //   ),
-              // ),
               Expanded(
                 child: Text(
                   textAlign: TextAlign.center,
-                  'اسم السوره',
+                  AppLocalizations.of(context)!.sura_name,
                   style: GoogleFonts.amiri(
                       textStyle: Theme.of(context).textTheme.titleMedium),
                 ),
@@ -59,16 +50,9 @@ class QuranTap extends StatelessWidget {
             ]),
           ),
         ),
-
         Expanded(
           child: ListView.builder(
             physics: const BouncingScrollPhysics(),
-            // separatorBuilder: (context, index) => Divider(
-            //   endIndent: 35,
-            //   indent: 35,
-            //   thickness: 2,
-            //   color: MyTheme.lightColor,
-            // ),
             itemBuilder: (context, index) {
               return InkWell(
                 key: ValueKey(index),
