@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:islami/provider/mode_provider.dart';
 import 'package:islami/screens/quran_tap/quran_tap.dart';
+import 'package:provider/provider.dart';
 import '../../thems.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -21,6 +23,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isLightMode = Provider.of<ModeProvider>(context).light;
     var data = ModalRoute.of(context)?.settings.arguments as SuraData;
 
     if (isLoading) {
@@ -28,16 +31,18 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
     }
 
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.cover,
-          image: AssetImage('assets/images/home_dark_background.jpg'),
+          image: AssetImage(isLightMode
+              ? "assets/images/default_bg.png"
+              : 'assets/images/home_dark_background.jpg'),
         ),
       ),
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-           AppLocalizations.of(context)!.app_title,
+            AppLocalizations.of(context)!.app_title,
             style: GoogleFonts.amiri(
                 textStyle: Theme.of(context).textTheme.titleLarge),
           ),
@@ -55,7 +60,7 @@ class _SuraDetailsScreenState extends State<SuraDetailsScreen> {
                     top: 10, left: 20, right: 20, bottom: 20),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color:Theme.of(context).primaryColor.withOpacity(0.40),
+                  color: Theme.of(context).primaryColor.withOpacity(0.40),
                 ),
                 child: Column(
                   children: [

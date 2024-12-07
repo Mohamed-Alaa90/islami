@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ItemHadethDetails extends StatelessWidget {
-  ItemHadethDetails({super.key, required this.content});
+  const ItemHadethDetails({super.key, required this.content});
 
-  String content;
+  final String content;
 
   @override
   Widget build(BuildContext context) {

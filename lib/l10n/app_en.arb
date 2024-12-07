@@ -7,5 +7,9 @@
 "hadeth" : "Hadeth",
 "radio" : "Radio",
 "setting" : "Setting",
-"hadeth_name" : "Hadeth"
+"hadeth_name" : "Hadeth",
+"darkTheme" : "DarkTheme",
+"lightTheme" : "LightTheme",
+"english" : "English",
+"arbic" : "Arbic"
 }

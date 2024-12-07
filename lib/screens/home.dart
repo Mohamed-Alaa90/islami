@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:circle_nav_bar/circle_nav_bar.dart';
 import 'package:flutter_islamic_icons/flutter_islamic_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:islami/provider/mode_provider.dart';
 import 'package:islami/screens/hadeth_tap/hadeth_tap.dart';
 import 'package:islami/screens/quran_tap/quran_tap.dart';
 import 'package:islami/screens/radio_tap/radio_tap.dart';
 import 'package:islami/screens/sebha_tap/sebha_tap.dart';
 import 'package:islami/screens/setting_tap/setting_tap.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   static const String routeName = 'Home';
@@ -23,23 +25,42 @@ class _HomeState extends State<Home> {
 
   final List<Widget> taps = [
     RadioTap(),
-    HadethTap(),
+    const HadethTap(),
     QuranTap(),
     SebhaTap(),
-    SettingTap(),
+    const SettingTap(),
   ];
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            fit: BoxFit.cover,
-            image: AssetImage("assets/images/home_dark_background.jpg"),
+    final isLightMode = Provider.of<ModeProvider>(context).light;
+
+    return Stack(
+      children: [
+        AnimatedSwitcher(
+          duration: const Duration(milliseconds: 500),
+          transitionBuilder: (Widget child, Animation<double> animation) {
+            return FadeTransition(
+              opacity: animation,
+              child: child,
+            );
+          },
+          child: Container(
+            key: ValueKey(isLightMode),
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: AssetImage(
+                  isLightMode
+                      ? "assets/images/default_bg.png"
+                      : "assets/images/home_dark_background.jpg",
+                ),
+              ),
+            ),
           ),
         ),
-        child: Scaffold(
+        Scaffold(
+          backgroundColor: Colors.transparent,
           appBar: AppBar(
             title: Text(
               AppLocalizations.of(context)!.app_title,
@@ -114,7 +135,9 @@ class _HomeState extends State<Home> {
                 AppLocalizations.of(context)!.setting,
               ],
               activeLevelsStyle: GoogleFonts.amiri(
-                  fontSize: 16, color: Theme.of(context).cardColor),
+                fontSize: 16,
+                color: Theme.of(context).cardColor,
+              ),
               inactiveLevelsStyle:
                   GoogleFonts.amiri(fontSize: 16, color: Colors.white),
               color: Theme.of(context).primaryColor,
@@ -149,7 +172,7 @@ class _HomeState extends State<Home> {
             child: taps[_selectedIndex],
           ),
         ),
-      ),
+      ],
     );
   }
 }

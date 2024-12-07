@@ -3,7 +3,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:islami/screens/quran_tap/item_sura_name.dart';
 import 'package:islami/screens/quran_tap/sura_details_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:islami/thems.dart';
 
 class QuranTap extends StatelessWidget {
   QuranTap({super.key});
@@ -19,17 +18,16 @@ class QuranTap extends StatelessWidget {
             child: Image.asset('assets/images/qur2an_screen_logo.png'),
           ),
         ),
-        Container(
-          margin: const EdgeInsets.symmetric(horizontal: 13, vertical: 5),
-          //padding: const EdgeInsets.all(5),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            border: Border.all(width: 1, color: MyTheme.whiteColor),
-          ),
-          child: Card(
-            //borderRadius: BorderRadius.circular(25),
-            elevation: 6,
+        Card(
+          //borderRadius: BorderRadius.circular(25),
+          elevation: 6,
 
+          child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 13, vertical: 5),
+            //padding: const EdgeInsets.all(5),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+            ),
             child: Row(children: [
               Expanded(
                 child: Text(
@@ -57,15 +55,20 @@ class QuranTap extends StatelessWidget {
               return InkWell(
                 key: ValueKey(index),
                 onTap: () {
-                  Navigator.pushNamed(context, SuraDetailsScreen.routeName,
-                      arguments: SuraData(
-                          suraName: suraNames[index],
-                          suraNumber: (index + 1).toString()));
+                  Navigator.pushNamed(
+                    context,
+                    SuraDetailsScreen.routeName,
+                    arguments: SuraData(
+                      suraName: suraNames[index],
+                      suraNumber: (index + 1).toString(),
+                    ),
+                  );
                 },
                 child: ItemSuraName(
                   data: SuraData(
-                      suraName: suraNames[index],
-                      suraNumber: versesNumber[index].toString()),
+                    suraName: suraNames[index],
+                    suraNumber: versesNumber[index].toString(),
+                  ),
                 ),
               );
             },

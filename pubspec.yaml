@@ -43,6 +43,7 @@ dependencies:
   shimmer:
   flutter_native_splash:
   icons_launcher:
+  provider:
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:islami/provider/mode_provider.dart';
 import 'package:islami/screens/hadeth_tap/hadeth_tap.dart';
 import 'package:islami/screens/hadeth_tap/item_hadeth_details.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class HadethDetailsScreen extends StatefulWidget {
   const HadethDetailsScreen({super.key});
@@ -20,18 +22,20 @@ class _SuraDetailsScreenState extends State<HadethDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     var data = ModalRoute.of(context)?.settings.arguments as Hadeth;
-
+    final isLight = Provider.of<ModeProvider>(context).light;
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.cover,
-          image: AssetImage('assets/images/home_dark_background.jpg'),
+          image: AssetImage(isLight
+              ? "assets/images/default_bg.png"
+              : 'assets/images/home_dark_background.jpg'),
         ),
       ),
       child: Scaffold(
         appBar: AppBar(
           title: Text(
-           AppLocalizations.of(context)!.app_title,
+            AppLocalizations.of(context)!.app_title,
             style: GoogleFonts.amiri(
                 textStyle: Theme.of(context).textTheme.titleLarge),
           ),

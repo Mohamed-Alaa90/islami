@@ -7,5 +7,9 @@
 "hadeth" : "الحديث",
 "radio" : "الاذاعه",
 "setting" : "الاعدادات",
-"hadeth_name" : "الاحاديث"
+"hadeth_name" : "الاحاديث",
+"darkTheme" : "الوضع الليلي",
+"lightTheme" : "الوضع النهاري",
+"english" : "الانجليزيه",
+"arbic" : "العربيه"
 }
