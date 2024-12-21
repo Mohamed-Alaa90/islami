@@ -24,10 +24,10 @@ class _HomeState extends State<Home> {
   int _selectedIndex = 2;
 
   final List<Widget> taps = [
-    RadioTap(),
+    SebhaTap(),
     const HadethTap(),
     QuranTap(),
-    SebhaTap(),
+    RadioTap(),
     const SettingTap(),
   ];
 

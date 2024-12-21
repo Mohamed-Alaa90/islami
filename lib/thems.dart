@@ -10,7 +10,7 @@ class MyTheme {
 
   static ThemeData lightTheme = ThemeData(
 
-    useMaterial3: true,
+    useMaterial3: false,
     primaryColor: lightColor,
     appBarTheme:  AppBarTheme(
       iconTheme: IconThemeData(color:blackColor ),
@@ -39,7 +39,7 @@ class MyTheme {
     ),
   );
   static ThemeData darkTheme = ThemeData(
-      useMaterial3: true,
+      useMaterial3: false,
     primaryColor: darkColor,
     appBarTheme:
     AppBarTheme(

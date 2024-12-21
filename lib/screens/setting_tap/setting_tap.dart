@@ -17,17 +17,18 @@ class SettingTap extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          GestureDetector(
+          InkWell(
             onTap: () {
               Provider.of<ModeProvider>(context, listen: false).changMode();
             },
             child: CustomBottomsSetting(
               text: Text(
-                  style: GoogleFonts.amiri(
-                      textStyle: Theme.of(context).textTheme.titleMedium),
-                  isLightMode
-                      ? AppLocalizations.of(context)!.darkTheme
-                      : AppLocalizations.of(context)!.lightTheme),
+                style: GoogleFonts.amiri(
+                    textStyle: Theme.of(context).textTheme.titleMedium),
+                isLightMode
+                    ? AppLocalizations.of(context)!.darkTheme
+                    : AppLocalizations.of(context)!.lightTheme,
+              ),
               icon: Icon(
                 size: 35,
                 isLightMode ? Icons.light_mode : Icons.dark_mode,
@@ -41,11 +42,12 @@ class SettingTap extends StatelessWidget {
             },
             child: CustomBottomsSetting(
               text: Text(
-                  style: GoogleFonts.amiri(
-                      textStyle: Theme.of(context).textTheme.titleMedium),
-                  isArabic
-                      ? AppLocalizations.of(context)!.arbic
-                      : AppLocalizations.of(context)!.english),
+                style: GoogleFonts.amiri(
+                    textStyle: Theme.of(context).textTheme.titleMedium),
+                isArabic
+                    ? AppLocalizations.of(context)!.arbic
+                    : AppLocalizations.of(context)!.english,
+              ),
               icon: const Icon(Icons.language, color: Colors.white),
             ),
           ),

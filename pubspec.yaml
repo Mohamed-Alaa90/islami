@@ -44,6 +44,8 @@ dependencies:
   flutter_native_splash:
   icons_launcher:
   provider:
+  shared_preferences: 
+  supabase_flutter: ^2.8.1
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -64,6 +66,7 @@ flutter:
   assets:
 
     - assets/images/
+    - assets/
     - assets/quran/
     - assets/hadeth/ahadeth.txt
 
@@ -102,9 +105,11 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
 icons_launcher:
-  image_path: "assets/logo.jpg"
+  image_path: "assets/logo2.jpg"
   platforms:
     android:
       enable: true
     ios:
+      enable: true
+    linux:
       enable: true
