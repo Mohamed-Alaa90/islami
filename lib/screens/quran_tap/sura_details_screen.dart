@@ -5,7 +5,7 @@ import 'package:islami/provider/mode_provider.dart';
 import 'package:islami/screens/quran_tap/quran_tap.dart';
 import 'package:provider/provider.dart';
 import '../../thems.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islami/l10n/app_localizations.dart';
 
 class SuraDetailsScreen extends StatefulWidget {
   const SuraDetailsScreen({super.key});

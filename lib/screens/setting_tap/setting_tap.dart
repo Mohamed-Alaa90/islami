@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:islami/provider/mode_provider.dart';
 import 'package:islami/widgets/custom_bottoms_setting.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islami/l10n/app_localizations.dart';
 
 class SettingTap extends StatelessWidget {
   const SettingTap({super.key});

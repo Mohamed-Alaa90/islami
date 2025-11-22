@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:islami/l10n/app_localizations.dart';
 import 'package:islami/provider/mode_provider.dart';
 import 'package:islami/screens/hadeth_tap/hadeth_details_screen.dart';
 import 'package:islami/screens/home.dart';
 import 'package:islami/screens/quran_tap/sura_details_screen.dart';
 import 'package:islami/screens/splach.dart';
 import 'package:islami/thems.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 void main() {

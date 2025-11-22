@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami/screens/quran_tap/item_sura_name.dart';
 import 'package:islami/screens/quran_tap/sura_details_screen.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islami/l10n/app_localizations.dart';
 
 class QuranTap extends StatelessWidget {
   QuranTap({super.key});

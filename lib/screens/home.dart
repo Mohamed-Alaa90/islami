@@ -8,7 +8,7 @@ import 'package:islami/screens/quran_tap/quran_tap.dart';
 import 'package:islami/screens/radio_tap/radio_tap.dart';
 import 'package:islami/screens/sebha_tap/sebha_tap.dart';
 import 'package:islami/screens/setting_tap/setting_tap.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islami/l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {

@@ -44,7 +44,9 @@ class _SebhaTapState extends State<SebhaTap> {
           Container(
             padding: const EdgeInsets.all(15),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15), color: Colors.blue),
+              borderRadius: BorderRadius.circular(15),
+              color: Theme.of(context).primaryColor,
+            ),
             child: Text(
               "$counter",
               style: GoogleFonts.amiri(
@@ -58,7 +60,9 @@ class _SebhaTapState extends State<SebhaTap> {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
             decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(15), color: Colors.amber),
+              borderRadius: BorderRadius.circular(15),
+              color: Theme.of(context).primaryColor,
+            ),
             child: Text(
               do3aa[index],
               style: GoogleFonts.amiri(

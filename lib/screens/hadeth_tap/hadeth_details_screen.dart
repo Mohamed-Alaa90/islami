@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:islami/provider/mode_provider.dart';
 import 'package:islami/screens/hadeth_tap/hadeth_tap.dart';
 import 'package:islami/screens/hadeth_tap/item_hadeth_details.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islami/l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 class HadethDetailsScreen extends StatefulWidget {

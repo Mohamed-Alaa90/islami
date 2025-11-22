@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:islami/screens/hadeth_tap/hadeth_details_screen.dart';
 import 'package:islami/screens/hadeth_tap/item_hadeth_name.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islami/l10n/app_localizations.dart';
 
 class HadethTap extends StatefulWidget {
   const HadethTap({super.key});

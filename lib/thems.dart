@@ -20,7 +20,7 @@ class MyTheme {
       centerTitle: true,
     ),
     dividerTheme: DividerThemeData(color: lightColor, indent: 3),
-    cardTheme: CardTheme(
+    cardTheme: CardThemeData(
         //margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         color: lightColor),
     cardColor:darkColor ,
@@ -61,7 +61,7 @@ class MyTheme {
           color: goldColor, fontSize: 30, fontWeight: FontWeight.w700),
     ),
     dividerTheme: DividerThemeData(color: goldColor, indent: 3),
-    cardTheme: CardTheme(color: darkColor),
+    cardTheme: CardThemeData(color: darkColor),
     cardColor: goldColor
   );
 }
